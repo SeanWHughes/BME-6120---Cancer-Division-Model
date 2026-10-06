@@ -44,7 +44,7 @@ class Cell:
             genes['ALDH2'] = Gene('ALDH2', 'neutral')
             
             genes['ADH1B'] = Gene('ADH1B', 'neutral')
-            genes['UGT1A1'] = Gene('UGT1A1', 'neutral)
+            genes['UGT1A1'] = Gene('UGT1A1', 'neutral')
             genes['CYP2C19'] = Gene('CYP2C19', 'neutral')
             genes['CYP2D6'] = Gene('CYP2D6', 'neutral')
             genes['OTC'] = Gene('OTC', 'neutral')
