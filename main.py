@@ -441,7 +441,6 @@ plot_fig, plot_ax = plt.subplots(figsize=(11, 8))
 snapshot_folder = "cell_population_snapshots"
 os.makedirs(snapshot_folder, exist_ok=True)
 
-
 def plot_cell_population(
     cell_list,
     timestep=None,
@@ -658,11 +657,11 @@ for celltype in celltype_names:
 
 #%%     SIMULATION SETTINGS
 
-timesteps = 2000           # maximum total steps
+timesteps = 2000            # maximum total steps
 therapy_delay = 3          # timesteps between detection and therapy
 therapy_duration = 20      # duration of therapy
 detect = 200               # clinically detectable driver-mutated cell count
-max_cells = 10000          # safety stop for run time
+max_cells = 10000           # safety stop for run time
 
 # Randomly select 10 founding lineages
 lineage_roots = random.sample(
@@ -694,7 +693,7 @@ therapy2_end = None
 
 for t in range(timesteps):
     # Run animation
-    plot_cell_population(cell_list)
+    plot_cell_population(cell_list, t)
 
     # Kill cells naturally
     reaper(cell_list)
