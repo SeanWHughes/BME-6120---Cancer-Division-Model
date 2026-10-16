@@ -86,7 +86,7 @@ class Cell:
         self.genes = {}
 
         # Gene assignments
-        self.genes['BRCA1'] = Gene('BRCA1', 'driver', 3*10**-4,
+        self.genes['BRCA1'] = Gene('BRCA1', 'driver', 1*10**-4,
             gene_effects = {
                 'death_rate': -0.02,
                 'grow_rate': 4.0,
@@ -124,7 +124,7 @@ class Cell:
 class Gene:
     def __init__(self, gene_name: str, 
                  gene_purpose: str, 
-                 gene_mut_rate = 10**-2,
+                 gene_mut_rate = 5*10**-5,
                  gene_effects = None):
         """
         Initialize a new gene.
@@ -356,7 +356,7 @@ def is_resistant(cell):
     return any(cell.genes[g].mutated for g in RESISTANCE_GENES)
 
 
-def acquire_resistance(cell_list, rate=1e-4):
+def acquire_resistance(cell_list, rate=2e-4):
     """
     Each resistance gene in each cell may mutate once per timestep.
     """
@@ -455,6 +455,10 @@ def plot_cell_population(
 
     if not cell_list:
         print("The population is empty.")
+        return
+    
+    # Enforce a max cell count for the animation (different than sim max)
+    if len(cell_list) > 1000:
         return
 
     ax = plot_ax
@@ -692,7 +696,7 @@ therapy2_end = None
 #%%     SIMULATION LOOP WITH THERAPY
 
 for t in range(timesteps):
-    # Run animation
+    # Animation
     plot_cell_population(cell_list, t)
 
     # Kill cells naturally
